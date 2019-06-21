@@ -3,12 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19DC485822BC2242005999EA /* MenuModelCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC485722BC2242005999EA /* MenuModelCodable.swift */; };
+		19DC485D22BC23C0005999EA /* DispatchQueueHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC485C22BC23C0005999EA /* DispatchQueueHelper.swift */; };
+		19DC486022BC2424005999EA /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC485F22BC2424005999EA /* EndPoint.swift */; };
+		19DC486222BC2455005999EA /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC486122BC2455005999EA /* NetworkAdapter.swift */; };
+		19DC486422BC258F005999EA /* MenuEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC486322BC258F005999EA /* MenuEnum.swift */; };
+		19DC486722BC28A0005999EA /* MenuVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC486622BC28A0005999EA /* MenuVM.swift */; };
+		19DC486922BC28C3005999EA /* MenuVMDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC486822BC28C3005999EA /* MenuVMDelegate.swift */; };
+		19DC486B22BC7588005999EA /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC486A22BC7588005999EA /* UIViewController+Extension.swift */; };
 		19E2404322BC0CDB00022D0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E2404222BC0CDB00022D0A /* AppDelegate.swift */; };
-		19E2404522BC0CDB00022D0A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E2404422BC0CDB00022D0A /* ViewController.swift */; };
+		19E2404522BC0CDB00022D0A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E2404422BC0CDB00022D0A /* MenuViewController.swift */; };
 		19E2404822BC0CDB00022D0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E2404622BC0CDB00022D0A /* Main.storyboard */; };
 		19E2404A22BC0CDD00022D0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19E2404922BC0CDD00022D0A /* Assets.xcassets */; };
 		19E2404D22BC0CDD00022D0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E2404B22BC0CDD00022D0A /* LaunchScreen.storyboard */; };
@@ -35,9 +43,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19DC485722BC2242005999EA /* MenuModelCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModelCodable.swift; sourceTree = "<group>"; };
+		19DC485C22BC23C0005999EA /* DispatchQueueHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueHelper.swift; sourceTree = "<group>"; };
+		19DC485F22BC2424005999EA /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		19DC486122BC2455005999EA /* NetworkAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
+		19DC486322BC258F005999EA /* MenuEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuEnum.swift; sourceTree = "<group>"; };
+		19DC486622BC28A0005999EA /* MenuVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVM.swift; sourceTree = "<group>"; };
+		19DC486822BC28C3005999EA /* MenuVMDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVMDelegate.swift; sourceTree = "<group>"; };
+		19DC486A22BC7588005999EA /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		19E2403F22BC0CDB00022D0A /* elmenus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = elmenus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19E2404222BC0CDB00022D0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		19E2404422BC0CDB00022D0A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		19E2404422BC0CDB00022D0A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		19E2404722BC0CDB00022D0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		19E2404922BC0CDD00022D0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19E2404C22BC0CDD00022D0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -79,6 +95,116 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19DC484D22BC1F7E005999EA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				19DC485722BC2242005999EA /* MenuModelCodable.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		19DC484E22BC1F86005999EA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				19DC486522BC2871005999EA /* MenuViewModel */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		19DC484F22BC1F91005999EA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				19DC485622BC2187005999EA /* ViewController */,
+				19DC485522BC217B005999EA /* Storyboard */,
+				19DC485422BC216E005999EA /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		19DC485022BC20F8005999EA /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				19E2404222BC0CDB00022D0A /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		19DC485122BC2112005999EA /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				19DC485B22BC23A2005999EA /* CustomeControls */,
+				19DC485A22BC238E005999EA /* Extension */,
+				19DC485C22BC23C0005999EA /* DispatchQueueHelper.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		19DC485222BC212B005999EA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				19DC485F22BC2424005999EA /* EndPoint.swift */,
+				19DC486322BC258F005999EA /* MenuEnum.swift */,
+				19DC486122BC2455005999EA /* NetworkAdapter.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		19DC485322BC2145005999EA /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				19E2404922BC0CDD00022D0A /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		19DC485422BC216E005999EA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		19DC485522BC217B005999EA /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				19E2404622BC0CDB00022D0A /* Main.storyboard */,
+				19E2404B22BC0CDD00022D0A /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		19DC485622BC2187005999EA /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				19E2404422BC0CDB00022D0A /* MenuViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		19DC485A22BC238E005999EA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				19DC486A22BC7588005999EA /* UIViewController+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		19DC485B22BC23A2005999EA /* CustomeControls */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomeControls;
+			sourceTree = "<group>";
+		};
+		19DC486522BC2871005999EA /* MenuViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				19DC486622BC28A0005999EA /* MenuVM.swift */,
+				19DC486822BC28C3005999EA /* MenuVMDelegate.swift */,
+			);
+			path = MenuViewModel;
+			sourceTree = "<group>";
+		};
 		19E2403622BC0CDB00022D0A = {
 			isa = PBXGroup;
 			children = (
@@ -104,11 +230,13 @@
 		19E2404122BC0CDB00022D0A /* elmenus */ = {
 			isa = PBXGroup;
 			children = (
-				19E2404222BC0CDB00022D0A /* AppDelegate.swift */,
-				19E2404422BC0CDB00022D0A /* ViewController.swift */,
-				19E2404622BC0CDB00022D0A /* Main.storyboard */,
-				19E2404922BC0CDD00022D0A /* Assets.xcassets */,
-				19E2404B22BC0CDD00022D0A /* LaunchScreen.storyboard */,
+				19DC485322BC2145005999EA /* Assets */,
+				19DC485022BC20F8005999EA /* Application */,
+				19DC485122BC2112005999EA /* Utilities */,
+				19DC484D22BC1F7E005999EA /* Model */,
+				19DC485222BC212B005999EA /* Services */,
+				19DC484E22BC1F86005999EA /* ViewModel */,
+				19DC484F22BC1F91005999EA /* View */,
 				19E2404E22BC0CDD00022D0A /* Info.plist */,
 			);
 			path = elmenus;
@@ -146,7 +274,6 @@
 				8C88C9D764691EBF357AB2AA /* Pods-elmenus.debug.xcconfig */,
 				FAE5D71DC504EC0F5BCBA0E5 /* Pods-elmenus.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -325,8 +452,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19E2404522BC0CDB00022D0A /* ViewController.swift in Sources */,
+				19DC486222BC2455005999EA /* NetworkAdapter.swift in Sources */,
+				19DC485822BC2242005999EA /* MenuModelCodable.swift in Sources */,
+				19DC485D22BC23C0005999EA /* DispatchQueueHelper.swift in Sources */,
+				19DC486022BC2424005999EA /* EndPoint.swift in Sources */,
+				19E2404522BC0CDB00022D0A /* MenuViewController.swift in Sources */,
 				19E2404322BC0CDB00022D0A /* AppDelegate.swift in Sources */,
+				19DC486922BC28C3005999EA /* MenuVMDelegate.swift in Sources */,
+				19DC486422BC258F005999EA /* MenuEnum.swift in Sources */,
+				19DC486B22BC7588005999EA /* UIViewController+Extension.swift in Sources */,
+				19DC486722BC28A0005999EA /* MenuVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
