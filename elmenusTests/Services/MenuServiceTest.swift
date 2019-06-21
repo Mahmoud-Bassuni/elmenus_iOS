@@ -9,7 +9,7 @@
 import XCTest
 @testable import elmenus
 class MenuServiceTests: XCTestCase {
-    var service :  NetworkAdapter<MenuEnum>!
+    var service: NetworkAdapter<MenuEnum>!
     override func setUp() {
         service = NetworkAdapter<MenuEnum>()
     }

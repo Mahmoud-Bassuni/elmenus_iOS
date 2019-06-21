@@ -22,9 +22,9 @@ class MenuVC: UIViewController {
         menuVM.delegate = self
         menuTableViewProp.tableFooterView = UIView() // ui of table
     }
-   // dispose vm 
-    override func viewDidAppear(_ animated: Bool) {
-      menuVM = nil
+   // dispose vm
+    override func viewWillDisappear(_ animated: Bool) {
+         menuVM = nil
     }
 }
 // tableview implementation

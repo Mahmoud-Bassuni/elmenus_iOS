@@ -5,7 +5,6 @@
 //  Created by Bassuni on 6/20/19.
 //  Copyright © 2019 Bassuni. All rights reserved.
 //
-
 import Foundation
 import Moya
 struct NetworkAdapter<T> where T: TargetType {

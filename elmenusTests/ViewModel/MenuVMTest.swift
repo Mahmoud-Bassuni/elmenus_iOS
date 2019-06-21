@@ -8,8 +8,8 @@
 import XCTest
 @testable import elmenus
 class MenuVMTest: XCTestCase {
-    var menuVM :  MenuVM!
-   var service :  NetworkAdapter<MenuEnum>!
+    var menuVM:  MenuVM!
+   var service:  NetworkAdapter<MenuEnum>!
     override func setUp() {
        service = NetworkAdapter<MenuEnum>()
     }
@@ -27,17 +27,15 @@ extension MenuVMTest : MenuVMDelegate
 {
     // call back after fetch data
     func dataBind() {
-        guard  (menuVM.categories.first != nil) else {
+        guard  (menuVM.numberOfSections > 0) else {
             XCTFail()
             return
         }
     }
     func showLoading() {
     }
-
     func hideLoading() {
     }
-
     func showAlert(messgae: String) {
         print(messgae)
     }

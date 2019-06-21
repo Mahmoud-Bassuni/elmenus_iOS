@@ -7,9 +7,9 @@
 //
 import Foundation
 class MenuVM{
-    var delegate : MenuVMDelegate!
-    var categories: [CategoryCodable]! = []
-    var serviceAdapter : NetworkAdapter<MenuEnum>!
+    public var delegate : MenuVMDelegate!
+    private var categories: [CategoryCodable]! = []
+    private var serviceAdapter : NetworkAdapter<MenuEnum>!
     init(_serviceAdapter : NetworkAdapter<MenuEnum>) {
         serviceAdapter = _serviceAdapter
         fetchMenuData()
@@ -41,6 +41,7 @@ class MenuVM{
         delegate = nil
     }
 }
+// this extension will be useful when we using tableview
 extension MenuVM {
     var numberOfSections: Int {
         return categories.count
@@ -52,11 +53,12 @@ extension MenuVM {
         let category = categories[index]
         return CategoryVM(category)
     }
+    // collapse and expand
     func toggle(index: Int) {
         self.categories[index].isExpanded = !(self.categories[index].isExpanded ?? false)
     }
 }
-class CategoryVM {
+struct CategoryVM {
     private let category: CategoryCodable
     init(_ _category: CategoryCodable) {
         category = _category
@@ -70,7 +72,7 @@ extension CategoryVM {
         return category.name
     }
     var isExpanded: Bool {
-        return category.isExpanded ?? false
+        return category.isExpanded ?? false // isExpanded is always nil so we make default value false
     }
     var categoryItems: [CategoryCodable] {
         return category.items
