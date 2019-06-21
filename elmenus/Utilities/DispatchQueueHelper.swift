@@ -7,6 +7,7 @@
 //
 
 import Foundation
+// dispacth helper to easy write 
 class DispatchQueueHelper {
     fileprivate init() {}
     public static func delay(bySeconds seconds: Double, dispatchLevel: DispatchLevel = .main, completion: @escaping () -> ()) {

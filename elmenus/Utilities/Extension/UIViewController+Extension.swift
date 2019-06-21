@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 extension UIViewController {
-
     func alert(title : String, message : String)
     {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)

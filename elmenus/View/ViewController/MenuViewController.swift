@@ -9,7 +9,6 @@
 import UIKit
 import SVProgressHUD
 class MenuVC: UIViewController {
-
     @IBOutlet var menuTableViewProp: UITableView!
     var menuVM : MenuVM!
     override func viewDidLoad() {
@@ -21,38 +20,66 @@ class MenuVC: UIViewController {
         menuTableViewProp.dataSource = self
         menuVM = MenuVM(_serviceAdapter: NetworkAdapter<MenuEnum>())
         menuVM.delegate = self
-        menuTableViewProp.tableFooterView = UIView()
+        menuTableViewProp.tableFooterView = UIView() // ui of table
     }
 }
+// tableview implementation
 extension MenuVC: UITableViewDelegate , UITableViewDataSource
 {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if menuVM.CategoryAtIndex(index: section).isOpen == true {
-            return menuVM.CategoryAtIndex(index: section).categoryItems.count + 1
+    // create ui of section
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let button = UIButton(type: .system)
+        let categoryName = menuVM.categoryAtIndex(index: section).categoryName
+        button.setTitle(categoryName, for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .yellow
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.addTarget(self, action: #selector(handleExpandClose), for: .touchUpInside)
+        button.tag = section
+        return button
+    }
+    @objc func handleExpandClose(button: UIButton) {
+        let section = button.tag
+        // we'll try to close the section first by deleting the rows
+        var indexPaths = [IndexPath]()
+        for row in menuVM.categoryAtIndex(index: section).categoryItems.indices {
+            // collect all rows per section
+            let indexPath = IndexPath(row: row, section: section)
+            indexPaths.append(indexPath)
         }
-        else{
-             return 1
+        let isExpanded = menuVM.categoryAtIndex(index: section).isExpanded
+        menuVM.toggle(index: section) // user enable to Expanded or collapse the section
+        if isExpanded {
+            menuTableViewProp.deleteRows(at: indexPaths, with: .fade)
+        } else {
+            menuTableViewProp.insertRows(at: indexPaths, with: .fade)
         }
     }
+
     func numberOfSections(in tableView: UITableView) -> Int {
-        return menuVM.categories.count
+        return menuVM.numberOfSections
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell") else {return UITableViewCell()}
-        if indexPath.row == 0{
-            cell.textLabel?.text = menuVM.CategoryAtIndex(index: indexPath.section).categoryName
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            if !menuVM.categoryAtIndex(index: section).isExpanded {
+                return 0
+            }
+            return menuVM.categoryAtIndex(index: section).categoryItems.count
         }
-        else {
-  cell.textLabel?.text = menuVM.CategoryAtIndex(index: indexPath.section).categoryItems[indexPath.row - 1].name
-        }
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as! MenuItemTableViewCell
+        let item = menuVM.categoryAtIndex(index: indexPath.section).categoryItems[indexPath.row]
+        cell.bindCell(item.name, item.itemDescription)
         return cell
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        menuVM.toggle(index:indexPath.section)
-        let sections = IndexSet.init(integer: indexPath.section)
-        tableView.reloadSections(sections, with: .top)
+     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 70
     }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 15
+    }
+
 }
+// implementation MenuVMDelegate
 extension MenuVC: MenuVMDelegate
 {
     func showLoading() {

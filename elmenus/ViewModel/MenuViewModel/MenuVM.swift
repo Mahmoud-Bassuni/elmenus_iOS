@@ -5,7 +5,6 @@
 //  Created by Bassuni on 6/20/19.
 //  Copyright © 2019 Bassuni. All rights reserved.
 //
-
 import Foundation
 class MenuVM{
     var delegate : MenuVMDelegate!
@@ -16,16 +15,19 @@ class MenuVM{
         fetchMenuData()
     }
     func fetchMenuData(){
+        // show loading in main ui thread
          DispatchQueueHelper.delay(bySeconds: 0, dispatchLevel: .main) {
             self.delegate?.showLoading()
         }
         serviceAdapter.request(target: .getMenuData, success: { [unowned self] response in
             do{
                 let decoder = JSONDecoder()
+                // decode the json object
                 let getData = try decoder.decode(MenuModelCodable.self,from: response.data)
                 DispatchQueueHelper.delay(bySeconds: 0) {
                     self.categories = getData.categories
                     DispatchQueueHelper.delay(bySeconds: 0, dispatchLevel: .main) {
+                        // realod data to table view after data fetch
                         self.delegate?.dataBind()
                     }
                 }
@@ -42,12 +44,12 @@ extension MenuVM {
     func numberOfRowsInSection(_ section: Int) -> Int {
         return self.categories[section].items.count
     }
-    func CategoryAtIndex(index: Int) -> CategoryVM {
+    func categoryAtIndex(index: Int) -> CategoryVM {
         let category = categories[index]
         return CategoryVM(category)
     }
     func toggle(index: Int) {
-        self.categories[index].isOpen = !(self.categories[index].isOpen ?? false)
+        self.categories[index].isExpanded = !(self.categories[index].isExpanded ?? false)
     }
 }
 class CategoryVM {
@@ -63,8 +65,8 @@ extension CategoryVM {
     var categoryName: String {
         return category.name
     }
-    var isOpen: Bool {
-        return category.isOpen ?? false
+    var isExpanded: Bool {
+        return category.isExpanded ?? false
     }
     var categoryItems: [CategoryCodable] {
         return category.items
