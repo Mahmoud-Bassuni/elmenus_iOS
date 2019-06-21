@@ -36,6 +36,10 @@ class MenuVM{
             }, error: {error  in self.delegate?.showAlert(messgae: error.localizedDescription)}
             , failure: {moyaError in self.delegate?.showAlert(messgae: moyaError.localizedDescription)})
     }
+    // when vm was dispose it must be to clear all dependency
+    deinit {
+        delegate = nil
+    }
 }
 extension MenuVM {
     var numberOfSections: Int {
